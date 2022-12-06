@@ -39,6 +39,12 @@ function App() {
             body: "리액트 기초를 공부해봅시다",
             isDone: true,
         },
+        {
+            id: 3,
+            title: "리액트 공부하기",
+            body: "리액트 기초를 공부해봅시다",
+            isDone: true,
+        },
     ]);
 
     const [title, setTitle] = useState("");
