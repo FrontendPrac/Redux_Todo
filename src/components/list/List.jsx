@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux"; // useSelector, useDispatch API 임포트
 import { deleteTodo } from "../../redux/modules/todos"; // deleteTodo function 임포트
+import { switchTodo } from "../../redux/modules/todos"; // swithTodo function 임포트
+import { Link } from "react-router-dom";
 
 const List = () => {
     // store에 있는 state 가져오기
@@ -11,34 +13,23 @@ const List = () => {
     // dispatch 사용 준비
     const dispatch = useDispatch();
 
-    // TODO: delete기능 구현하기
     // deleteTodoHandler function
-    const deleteTodoHandler = (id) => {
-        const newTodo = todos.filter((todo) => todo.id !== id);
-        console.log(newTodo);
-        dispatch(deleteTodo({newTodo}));
-        // setTodos(newTodo);
-    };
+    const deleteTodoHandler = (event) => {
+        // dispatch(deleteTodo())
+    }
 
-    // const deleteTodoHandler = (id) => {
-    //     const newTodo = todos.filter((todo) => todo.id !== id);
-    //     setTodos(newTodo);
-    // };
+    // dispatch(
+    //     addTodo({
+    //         id: uuidv4(),
+    //         title: title,
+    //         content: content,
+    //         isDone: false,
+    //     })
+    // );
 
-    // 완료,취소 button function
-    // const changeIsDoneHandelr = (id) => {
-    //     const newIsDone = todos.map((todo) => {
-    //         if (todo.id === id) {
-    //             return {
-    //                 ...todo,
-    //                 isDone: !todo.isDone,
-    //             };
-    //         } else {
-    //             return { ...todo };
-    //         }
-    //     });
-    //     setTodos(newIsDone);
-    // };
+    const switchTodoHandler = () => {
+        // dispatch(deleteTodo())
+    }
 
     return (
         <StList className="list-container">
@@ -48,6 +39,7 @@ const List = () => {
                     if (todo.isDone === false) {
                         return (
                             <StTodo key={todo.id} className="todo-container">
+                                <Link to="/">상세보기</Link>
                                 <div>
                                     <h2 className="todo-title">{todo.title}</h2>
                                     <div>{todo.content}</div>
@@ -55,17 +47,13 @@ const List = () => {
                                 <StButtonSet className="button-set">
                                     <StDeleteButton
                                         className="todo-delete-button button"
-                                        onClick={() => {
-                                            deleteTodoHandler(todo.id);
-                                        }}
+                                        onClick={deleteTodoHandler}
                                     >
                                         삭제하기
                                     </StDeleteButton>
                                     <StCompleteButton
                                         className="todo-complete-button button"
-                                        // onClick={() => {
-                                        //     changeIsDoneHandelr(todo.id);
-                                        // }}
+                                        onClick={switchTodoHandler}
                                     >
                                         완료
                                     </StCompleteButton>
@@ -81,6 +69,7 @@ const List = () => {
                     if (todo.isDone === true) {
                         return (
                             <StTodo key={todo.id} className="todo-container">
+                                <Link to="/">상세보기</Link>
                                 <div>
                                     <h2 className="todo-title">{todo.title}</h2>
                                     <div>{todo.content}</div>
@@ -88,17 +77,13 @@ const List = () => {
                                 <StButtonSet className="button-set">
                                     <StDeleteButton
                                         className="todo-delete-button button"
-                                        // onClick={() => {
-                                        //     deleteTodoHandler(todo.id);
-                                        // }}
+                                        onClick={deleteTodoHandler}
                                     >
                                         삭제하기
                                     </StDeleteButton>
                                     <StCompleteButton
                                         className="todo-complete-button button"
-                                        // onClick={() => {
-                                        //     changeIsDoneHandelr(todo.id);
-                                        // }}
+                                        onClick={switchTodoHandler}
                                     >
                                         취소
                                     </StCompleteButton>
@@ -137,7 +122,8 @@ const StTodo = styled.div`
     padding: 12px 24px 24px;
     border: 4px solid teal;
     border-radius: 12px;
-`;
+    a {text-decoration-line : none;
+    }`;
 
 const StButtonSet = styled.div`
     margin-top: 24px;

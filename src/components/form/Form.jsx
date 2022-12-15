@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux"; // useSelector, useDispatch API 임포트
-import { addTodo } from "../../redux/modules/todos"; // addTodo function 임포트
+import { addTodo } from "../../redux/modules/todos";  // addTodo function 임포트
+import { v4 as uuidv4 } from 'uuid'; 
 
 const Form = () => {
     // store에 있는 state 가져오기
@@ -37,7 +38,7 @@ const Form = () => {
             event.preventDefault();
             dispatch(
                 addTodo({
-                    id: todos.length + 1,
+                    id: uuidv4(),
                     title: title,
                     content: content,
                     isDone: false,
@@ -48,27 +49,6 @@ const Form = () => {
             // console.log(todos);
         }
     };
-
-    // const onSubmitHandler = (event) => {
-    //     if (
-    //         document.querySelector(".input-title").value === "" ||
-    //         document.querySelector(".input-content").vlaue === ""
-    //     ) {
-    //         event.preventDefault();
-    //     } else {
-    //         event.preventDefault();
-    //         const newTodo = {
-    //             id: todos.length + 1,
-    //             title: title,
-    //             content: content,
-    //             isDone: false,
-    //         };
-    //         setTodos([...todos, newTodo]);
-
-    //         setTitle("");
-    //         setContent("");
-    //     }
-    // };
 
     return (
         <StAddForm className="add-form">
