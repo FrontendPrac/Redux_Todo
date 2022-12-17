@@ -1,72 +1,80 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 // action value
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
-const SWITCH_TODO = "SWITCH_TODO"
+const SWITCH_TODO = "SWITCH_TODO";
 
 // action creator
 export const addTodo = (payload) => {
-    return {
-        type: ADD_TODO,
-        payload: payload,
-    };
+  return {
+    type: ADD_TODO,
+    payload: payload,
+  };
 };
 
 export const deleteTodo = (payload) => {
-    return {
-        type: DELETE_TODO,
-        payload: payload,
-    };
+  return {
+    type: DELETE_TODO,
+    payload: payload,
+  };
 };
 
 export const switchTodo = (payload) => {
-    return {
-        type: SWITCH_TODO,
-        payload: payload
-    }
-}
+  return {
+    type: SWITCH_TODO,
+    payload: payload,
+  };
+};
 
 // initial state
 const initialState = {
-    todos: [
-        {
-            id: uuidv4(),
-            title: "리엑트 공부하기",
-            content: "리엑트를 공부해봅시다",
-            isDone: false,
-        },
-        {
-            id: uuidv4(),
-            title: "리덕스 공부하기",
-            content: "리덕스를 공부해봅시다",
-            isDone: true,
-        },
-    ],
+  todos: [
+    {
+      id: uuidv4(),
+      title: "리엑트 공부하기",
+      content: "리엑트를 공부해봅시다",
+      isDone: false,
+    },
+    {
+      id: uuidv4(),
+      title: "리덕스 공부하기",
+      content: "리덕스를 공부해봅시다",
+      isDone: true,
+    },
+  ],
 };
 
 //reducer
 const todos = (state = initialState, action) => {
-    // console.log(action);
-    switch (action.type) {
-        case ADD_TODO:
-            return {
-                ...state,
-                todos: [...state.todos, action.payload],
-            };
-        case DELETE_TODO:
-            return {
-                ...state,
-                todos: [...state.todos, action.payload],
-            };
-        case SWITCH_TODO:
-            return {
-                ...state,
-                todos: [...state.todos, action.payload],
-            }
-        default:
-            return state;
-    }
+//   console.log(action);
+  switch (action.type) {
+    case ADD_TODO:
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+      };
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => {
+          return todo.id !== action.payload;
+        }),
+      };
+    case SWITCH_TODO:
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload) {
+            return { ...todo, isDone: !todo.isDone };
+          } else {
+            return todo;
+          }
+        }),
+      };
+    default:
+      return state;
+  }
 };
 
 export default todos;

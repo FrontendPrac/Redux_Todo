@@ -1,17 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import Todos from "../pages/Todos";
+import Detail from "../pages/Detail";
+import NotFound from "../pages/NotFound";
 
 const Router = () => {
   return (
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="Todos" element={<Todos />} />
-          <Route path="Todos/:id" element={<Todos />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default Router
+export default Router;

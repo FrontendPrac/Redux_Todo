@@ -1,11 +1,8 @@
 import React from "react";
-import "./App.css";
 import Router from "./shared/router";
 
 function App() {
-    return (
-        < Router />
-    );
+  return <Router />;
 }
 
 export default App;
