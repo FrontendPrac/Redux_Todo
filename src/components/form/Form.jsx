@@ -5,7 +5,7 @@ import { addTodo } from "../../redux/modules/todos"; // addTodo function 임포�
 import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
-  // dispatch 사용 준비
+  // dispatch 함수 가져오기
   const dispatch = useDispatch();
 
   // title, content state 생성

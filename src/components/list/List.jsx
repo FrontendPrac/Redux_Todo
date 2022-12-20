@@ -9,14 +9,16 @@ import { Link } from "react-router-dom";
 const List = ({ isActive, todo }) => {
   // const navigate = useNavigate();
 
-  // dispatch 사용 준비
+  // dispatch 함수 가져오기
   const dispatch = useDispatch();
 
+  // onClickdeleteHandler function
   const onClickdeleteHandler = () => {
     console.log(todo.id);
     dispatch(deleteTodo(todo.id));
   };
 
+  // onClickSwithHandler function
   const onClickSwithHandler = () => {
     // console.log(todo.id);
     dispatch(switchTodo(todo.id));

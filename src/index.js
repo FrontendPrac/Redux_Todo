@@ -4,8 +4,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 
 // 우리가 추가할 코드
-import store from "./redux/config/configStore"; // store 임포트
-import { Provider } from "react-redux"; // provider API 임포트
+import store from "./redux/config/configStore";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
