@@ -1,9 +1,22 @@
-import React from "react";
+// import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import List from "./List";
 
+// import axios from "axios";
+
 const Lists = ({ isActive }) => {
+  // const [todos, setTodos] = useState("");
+
+  // const fetchTodos = async () => {
+  //   const { data } = await axios.get("http://localhost:4000/todos");
+  //   setTodos(data);
+  // };
+
+  // useEffect(() => {
+  //   fetchTodos();
+  // }, []);
+
   const todos = useSelector((state) => state.todos.todos);
   // console.log(todos);
 

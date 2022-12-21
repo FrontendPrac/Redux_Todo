@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux"; // useSelector, useDispatch API 임포트
-import { addTodo } from "../../redux/modules/todos"; // addTodo function 임포트
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../redux/modules/todosSlice"
 import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
