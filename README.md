@@ -1,4 +1,4 @@
-# TodoList 리덕스 리펙토링(12.17)
+# TodoList 리덕스 리펙토링
 
 > 기능
 
@@ -9,12 +9,14 @@
 
 > 적용한 개념
 
-- action, actioncreator, type, payload, reducer
-- map, fileter, find
+- action, actioncreator, reducer
+- map, filter, find
 - react-router-dom
 - useState, useSelector, useDispatch
 - useParams, useNavigate, Link
 - styled-components
+- redux-toolkit(12.20)
+- jason-server(12.20)
 
 > 버그
 

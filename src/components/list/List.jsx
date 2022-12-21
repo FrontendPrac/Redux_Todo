@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { deleteTodo } from "../../redux/modules/todos";
-import { switchTodo } from "../../redux/modules/todos";
-// import { useNavigate } from "react-router-dom";
+import { deleteTodo } from "../../redux/modules/todosSlice";
+import { switchTodo } from "../../redux/modules/todosSlice";
 import { Link } from "react-router-dom";
 
 const List = ({ isActive, todo }) => {
-  // const navigate = useNavigate();
-
-  // dispatch 함수 가져오기
   const dispatch = useDispatch();
 
   // onClickdeleteHandler function
   const onClickdeleteHandler = () => {
-    console.log(todo.id);
+    // console.log(todo.id);
     dispatch(deleteTodo(todo.id));
   };
 
@@ -48,6 +44,9 @@ const StTodo = styled.div`
   padding: 12px 24px 24px;
   border: 4px solid teal;
   border-radius: 12px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
   a {
     text-decoration-line: none;
   }
