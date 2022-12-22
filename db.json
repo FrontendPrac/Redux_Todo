@@ -1,16 +1,28 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "json-server 공부하기",
-      "content": "json-server를 공부합시다",
+      "id": 2,
+      "title": "리덕스",
+      "content": "store, module, action, dispatch, reducer, useSelector",
+      "isDone": true
+    },
+    {
+      "id": 4,
+      "title": "리덕스 툴킷",
+      "content": "createSlice, configureStore, createAsyncThunk",
       "isDone": false
     },
     {
-      "id": 2,
-      "title": "axios 공부하기",
-      "content": "axios를 공부합시다",
+      "id": 5,
+      "title": "라우팅",
+      "content": "react-router-dom, useParams, useNavigate, Link to",
       "isDone": true
+    },
+    {
+      "id": 6,
+      "title": "React project",
+      "content": "대한민국 16강 진출을 진심으로 축하합니다. 고생하셨습니다 선수들!!",
+      "isDone": false
     }
   ]
 }

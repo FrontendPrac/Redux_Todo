@@ -1,30 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../redux/modules/todosSlice"
-import { v4 as uuidv4 } from "uuid";
+import { __addTodo } from "../../redux/modules/todosSlice";
 
 const Form = () => {
-  // dispatch 함수 가져오기
   const dispatch = useDispatch();
 
-  // title, content state 생성
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
 
-  // title update function
   const onChangeTitleHandler = (event) => {
     const newTitle = event.target.value;
     setTitle(newTitle);
   };
 
-  // content update function
   const onChangeContentHandler = (event) => {
     const newContent = event.target.value;
     setContent(newContent);
   };
 
-  // onSubmitHandler function
+  // console.log(title);
+  // console.log(content);
+
   const onSubmitHandler = (event) => {
     if (
       document.querySelector(".input-title").value === "" ||
@@ -33,17 +30,18 @@ const Form = () => {
       event.preventDefault();
     } else {
       event.preventDefault();
+
       dispatch(
-        addTodo({
-          id: uuidv4(),
+        __addTodo({
+          id: "",
           title: title,
           content: content,
           isDone: false,
         })
       );
+
       setTitle("");
       setContent("");
-      // console.log(todos);
     }
   };
 
@@ -68,6 +66,7 @@ const Form = () => {
         />
       </StInputGroup>
       <StAddButton className="add-button" onClick={onSubmitHandler}>
+        {/* <StAddButton className="add-button" onClick={(event) => onSubmitHandler(title, content)}> */}
         추가하기
       </StAddButton>
     </StAddForm>

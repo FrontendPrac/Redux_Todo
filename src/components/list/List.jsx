@@ -1,29 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { deleteTodo } from "../../redux/modules/todosSlice";
-import { switchTodo } from "../../redux/modules/todosSlice";
 import { Link } from "react-router-dom";
+
+import { __deleteTodo } from "../../redux/modules/todosSlice";
+import { __switchTodo } from "../../redux/modules/todosSlice";
 
 const List = ({ isActive, todo }) => {
   const dispatch = useDispatch();
 
-  // onClickdeleteHandler function
   const onClickdeleteHandler = () => {
     // console.log(todo.id);
-    dispatch(deleteTodo(todo.id));
+    dispatch(__deleteTodo(todo.id));
   };
 
-  // onClickSwithHandler function
   const onClickSwithHandler = () => {
     // console.log(todo.id);
-    dispatch(switchTodo(todo.id));
+    dispatch(__switchTodo({id: todo.id, isDone: !todo.isDone}));
   };
 
   return (
     <StTodo key={todo.id}>
-      {/* <button onClick={() => navigate("/detail")}>상세보기</button> */}
-      {/* <Link to="/detail">상세보기</Link> */}
       <Link to={`/detail/${todo.id}`}>상세보기</Link>
       <div>
         <h2>{todo.title}</h2>
