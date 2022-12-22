@@ -1,24 +1,26 @@
 // import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import List from "./List";
-
-// import axios from "axios";
+import { __getTodos } from "../../redux/modules/todosSlice";
 
 const Lists = ({ isActive }) => {
-  // const [todos, setTodos] = useState("");
+  const dispatch = useDispatch();
 
-  // const fetchTodos = async () => {
-  //   const { data } = await axios.get("http://localhost:4000/todos");
-  //   setTodos(data);
-  // };
+  useEffect(() => {
+    dispatch(__getTodos());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
+  const { isLoading, error, todos } = useSelector((state) => state.todos);
 
-  const todos = useSelector((state) => state.todos.todos);
-  // console.log(todos);
+  if (isLoading) {
+    return <div>로딩 중 ...</div>;
+  }
+
+  if (error) {
+    return <div>{error.message}</div>;
+  }
 
   return (
     <>
