@@ -9,13 +9,13 @@ const initialState = {
   error: null,
 };
 
-// Thunk - fulfillWithValue, rejectWithValue
+// Thunk - createAsyncThuck, fulfillWithValue, rejectWithValue
 export const __getTodos = createAsyncThunk(
   "getTodos",
   async (payload, thunkAPI) => {
     try {
       const data = await axios.get("http://localhost:4000/todos");
-      // console.log(data);
+      // console.log("data.data: ", data.data);
       return thunkAPI.fulfillWithValue(data.data); //통신이 성공했을때 dispatch 실행
     } catch (error) {
       // console.log(error);
@@ -65,7 +65,7 @@ export const __switchTodo = createAsyncThunk(
   }
 );
 
-// crateSlice, extraReducer - action value, action creator, reducer
+// crateSlice, extraReducer
 const todosSlice = createSlice({
   name: "todos",
   initialState: initialState,
@@ -76,10 +76,12 @@ const todosSlice = createSlice({
       state.isLoading = true;
     },
     [__getTodos.fulfilled]: (state, action) => {
+      // console.log("action.payload: ", action.payload);
       state.isLoading = false;
       state.todos = action.payload;
     },
     [__getTodos.rejected]: (state, action) => {
+      console.log("action.payload: ", action.payload);
       state.isLoading = false;
       state.error = action.payload;
     },
@@ -89,6 +91,9 @@ const todosSlice = createSlice({
       state.isLoading = true;
     },
     [__addTodo.fulfilled]: (state, action) => {
+      console.log('state: ', state)
+      console.log('state.todos: ', state.todos)
+      console.log('action.payload: ', action.payload)
       state.isLoading = false;
       state.todos = [...state.todos, action.payload];
     },

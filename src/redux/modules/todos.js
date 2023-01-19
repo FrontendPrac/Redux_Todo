@@ -47,7 +47,7 @@ const initialState = {
 
 //reducer
 const todos = (state = initialState, action) => {
-//   console.log(action);
+  //   console.log(action);
   switch (action.type) {
     case ADD_TODO:
       return {
